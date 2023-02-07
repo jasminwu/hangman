@@ -83,6 +83,8 @@ int main() {
 									"iLvkKdT`yu~mWj[^gcO|","jSiLyzJ=vPmnv^`N]^>ViAC^z_","xo|RqqhO|nNstjmzfiuoiFfhwtdh~",
 									"OHkttvxdp|[nnW]Drgaomdq"};
 	char *body = malloc(CHANCE+1);
+	
+	// initialise setup
 
 	int id = i_rnd(WORDS);
 	char *word = decrypt(values[id]);
@@ -100,6 +102,7 @@ int main() {
 	setvbuf(stdin, NULL, _IONBF, 0);
 
 	do {
+	// keep going until player lost or won
 		found = false;
 		printf("\n\n");
 		printBody(mistakes, body);
@@ -125,7 +128,9 @@ int main() {
 		}
 		win = strchr(guessed, '_');
 	}while(mistakes < CHANCE && win != NULL);
-
+	
+	
+	// reveal answer and mistakes (if lost)
 	if(win == NULL) {
 		printf("\n");
 		printWord(guessed, len);
